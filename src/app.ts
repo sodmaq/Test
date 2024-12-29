@@ -97,10 +97,7 @@ class Server {
   }
 
   //initialize error middleware
-  // public errorHandlingMiddleware(): void {
-  //   this.app.use(errorMiddleware.errorHandler);
-  // }
-  public errorHandlingMiddleware(): void {
+  errorHandlingMiddleware(): void {
     this.app.use(errorMiddleware.errorHandler.bind(errorMiddleware));
   }
   //start express application
