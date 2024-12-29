@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env DEBUG='dev,stag,prod' tsnd --respawn --files src/app.ts"
   },
   "keywords": [],
   "author": "",
