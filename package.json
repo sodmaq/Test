@@ -8,7 +8,8 @@
     "migrate": "npm run sequelize db:migrate",
     "seed": "npx sequelize-cli db:seed:all",
     "undo": "npx sequelize-cli db:migrate:undo:all",
-    "undo-seed": "npx sequelize-cli db:seed:undo:all"
+    "undo-seed": "npx sequelize-cli db:seed:undo:all",
+    "sequelize": "npx sequelize-cli"
   },
   "keywords": [],
   "author": "",
