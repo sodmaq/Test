@@ -13,6 +13,17 @@ export interface UserAttribute {
   readonly updatedAt?: Date;
 }
 
+export interface ProfileAtrribute {
+  id: number;
+  userId: number;
+  bio: string;
+  linkedIn: string;
+  facebook: string;
+  instagram: string;
+  x: string;
+  phoneNumber: string;
+}
+
 export interface CreateUserData {
   fullname: string;
   email: string;

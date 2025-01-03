@@ -1,4 +1,4 @@
-import { User } from "../../db/models";
+import { Profile, User } from "../../db/models";
 import { UserStatus, UserRole } from "../../utils/enums/user.enum";
 import {
   BadRequestError,
@@ -18,9 +18,9 @@ class UserService extends BaseService<User> {
   }
 
   private userModel = User;
-  // public defaultIncludeables(withPermissions: boolean = false) {
-  //   return [this.generateIncludeable(Profile, "profile")];
-  // }
+  public defaultIncludeables(withPermissions: boolean = false) {
+    return [this.generateIncludeable(Profile, "profile")];
+  }
 
   public async create(data: CreateUserData): Promise<User> {
     const { fullname, email, password, avatar, username, role } = data;
@@ -102,12 +102,13 @@ class UserService extends BaseService<User> {
     // update profile
 
     // const profile = await profileService.get({ userId: user.id });
+    console.log("useriD:", user.id);
 
     // const profileAttributes = { bio, facebook, instagram, linkedIn, x };
 
     // await profile.update(profileAttributes);
 
-    return user;
+    return user.reload({ include: this.defaultIncludeables(true) });
   }
 
   public async getByEmailAndPassword(
@@ -148,4 +149,5 @@ class UserService extends BaseService<User> {
     return user;
   }
 }
+
 export default new UserService();

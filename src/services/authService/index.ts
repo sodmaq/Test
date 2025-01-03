@@ -19,3 +19,5 @@ class AuthService extends BaseService<Auth> {
     super(Auth, "Auth");
   }
 }
+
+export default new AuthService();

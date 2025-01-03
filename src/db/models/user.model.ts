@@ -8,6 +8,8 @@ import {
 import { UserAttribute } from "../../interfaces/user.interface";
 import { UserRole, UserStatus } from "../../utils/enums/user.enum";
 import bcrypt from "bcryptjs";
+import exp from "constants";
+import Profile from "./profile.index";
 class User
   extends Model<InferAttributes<User>, InferCreationAttributes<User>>
   implements UserAttribute
@@ -23,6 +25,14 @@ class User
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;
+}
+
+export function associateUser() {
+  User.hasOne(Profile, {
+    foreignKey: { allowNull: false, name: "userId" },
+    as: "profile",
+    onDelete: "CASCADE",
+  });
 }
 
 export function initUser(connection: Sequelize) {
