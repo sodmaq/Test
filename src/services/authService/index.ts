@@ -95,6 +95,9 @@ class AuthService extends BaseService<Auth> {
     delete user.dataValues.password;
     return { accessToken, refreshToken, user };
   }
+  public async isLoggedIn(userId: number): Promise<boolean> {
+    return (await this.get({ userId })).isLoggedIn;
+  }
 }
 
 export default new AuthService();
