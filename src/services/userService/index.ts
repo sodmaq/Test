@@ -18,9 +18,9 @@ class UserService extends BaseService<User> {
   }
 
   private userModel = User;
-  //   public defaultIncludeables(withPermissions: boolean = false) {
-  //     return [this.generateIncludeable(Profile, "profile")];
-  //   }
+  // public defaultIncludeables(withPermissions: boolean = false) {
+  //   return [this.generateIncludeable(Profile, "profile")];
+  // }
 
   public async create(data: CreateUserData): Promise<User> {
     const { fullname, email, password, avatar, username, role } = data;
