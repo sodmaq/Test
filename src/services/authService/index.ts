@@ -110,14 +110,11 @@ class AuthService extends BaseService<Auth> {
     const user = await userService.getByEmailOrId(null, id);
 
     const isAutherized = bcrypt.compareSync(oldPassword, user.password);
-    console.log("user password", user.password);
 
     if (!isAutherized) {
       throw new UnauthorizedError("Wrong Password");
     }
     await userService.update(id, { password: newPassword });
-    console.log("newPassword", newPassword);
-    console.log("oldPassword", oldPassword);
   }
   // public async changePassword(
   //   id: number,

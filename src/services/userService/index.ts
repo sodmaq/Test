@@ -105,7 +105,6 @@ class UserService extends BaseService<User> {
     // update profile
 
     // const profile = await profileService.get({ userId: user.id });
-    console.log("useriD:", user.id);
 
     // const profileAttributes = { bio, facebook, instagram, linkedIn, x };
 
