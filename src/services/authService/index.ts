@@ -96,6 +96,12 @@ class AuthService extends BaseService<Auth> {
     delete user.dataValues.password;
     return { accessToken, refreshToken, user };
   }
+  public async logout(userId: number): Promise<void> {
+    const isAutherized = await this.getByFKsOrError({ userId });
+    await isAutherized.update({ isLoggedIn: false }, { returning: true });
+
+    await isAutherized.reload();
+  }
   public async isLoggedIn(userId: number): Promise<boolean> {
     return (await this.get({ userId })).isLoggedIn;
   }

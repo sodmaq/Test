@@ -23,3 +23,8 @@
 {"time":"2025-01-04T10:48:31.327Z", "level":"info", "message": "method:POST, endpoint:/api/v1/auth/register, statusCode:400, responseTime: 357ms"}
 {"time":"2025-01-04T10:48:53.725Z", "level":"info", "message": "method:POST, endpoint:/api/v1/auth/register, statusCode:400, responseTime: 385ms"}
 {"time":"2025-01-04T10:49:43.117Z", "level":"info", "message": "method:POST, endpoint:/api/v1/auth/register, statusCode:500, responseTime: 725ms"}
+{"time":"2025-01-04T11:15:57.809Z", "level":"info", "message": "method:POST, endpoint:/register, statusCode:201, responseTime: 810ms"}
+{"time":"2025-01-04T11:23:31.115Z", "level":"info", "message": "method:GET, endpoint:/api/v1/auth/login, statusCode:404, responseTime: 41ms"}
+{"time":"2025-01-04T11:23:37.896Z", "level":"info", "message": "method:POST, endpoint:/api/v1/auth/login, statusCode:400, responseTime: 13ms"}
+{"time":"2025-01-04T11:23:49.062Z", "level":"info", "message": "method:POST, endpoint:/api/v1/auth/login, statusCode:401, responseTime: 447ms"}
+{"time":"2025-01-04T11:23:57.259Z", "level":"info", "message": "method:POST, endpoint:/login, statusCode:200, responseTime: 270ms"}

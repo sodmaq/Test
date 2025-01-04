@@ -50,4 +50,18 @@ export default class AuthControlller {
       next(error);
     }
   }
+
+  protected async logout(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<Response> {
+    try {
+      const { id } = req.user;
+      await authService.logout(id);
+      return apiResponse.successResponse(res, 200, "Logout Successful");
+    } catch (error) {
+      next(error);
+    }
+  }
 }

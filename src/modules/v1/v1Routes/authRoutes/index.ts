@@ -25,6 +25,9 @@ class AuthRoutes extends AuthController {
         customMiddleware.validateRequestBody(userValidator.loginSchema),
         this.login.bind(this)
       );
+    this.router
+      .route("/logout")
+      .post(authMiddleware.validateAccessToken, this.logout.bind(this));
   }
 }
 
