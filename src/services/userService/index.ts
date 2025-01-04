@@ -96,7 +96,10 @@ class UserService extends BaseService<User> {
       avatar,
       role: userRole,
     };
-
+    // if (password) {
+    //   user.password = password;
+    //   user.changed("password", true); // Mark password as changed to trigger beforeUpdate hook
+    // }
     await user.update(attributes);
 
     // update profile

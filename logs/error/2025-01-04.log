@@ -19,3 +19,4 @@
 {"time":"2025-01-04T10:23:15.373Z", "level":"error", "message": "invalid input value for enum enum_users_role: "User""}
 {"time":"2025-01-04T10:23:38.389Z", "level":"error", "message": "column "phoneNumber" of relation "profiles" does not exist"}
 {"time":"2025-01-04T10:49:43.106Z", "level":"error", "message": "column "phoneNumber" of relation "profiles" does not exist"}
+{"time":"2025-01-04T15:46:56.978Z", "level":"error", "message": "Illegal arguments: undefined, string"}

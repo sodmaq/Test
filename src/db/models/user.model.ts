@@ -60,14 +60,12 @@ export function initUser(connection: Sequelize) {
       scopes: { withPassword: { attributes: { include: ["password"] } } },
       hooks: {
         beforeCreate: async (user) => {
-          console.log("Before create user:", user);
           if (user.password) {
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hash(user.password, salt);
           }
         },
         beforeUpdate: async (user) => {
-          console.log("Before update user:", user);
           if (user.changed("password")) {
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hash(user.password, salt);

@@ -98,7 +98,7 @@ class UserValidatorUtil {
 
   public changePasswordSchema = (req: Request): ValidationResult => {
     const schema = Joi.object().keys({
-      old_password: Joi.string()
+      oldPassword: Joi.string()
         .label("Old Password")
         .min(8)
         .required()
@@ -107,7 +107,7 @@ class UserValidatorUtil {
           "any.required": "Old Password is required.",
           "string.min": "Old Password must be at least 8 characters long.",
         }),
-      new_password: Joi.string()
+      newPassword: Joi.string()
         .label("Password")
         .min(8)
         .regex(passwordPattern)
@@ -119,12 +119,12 @@ class UserValidatorUtil {
           "string.pattern.base":
             "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character.",
         }),
-      confirm_new_password: Joi.string()
+      confirmNewPassword: Joi.string()
         .label("Confirm New Password")
         .min(8)
         .regex(passwordPattern)
         .required()
-        .valid(Joi.ref("new_password"))
+        .valid(Joi.ref("newPassword"))
         .messages({
           "string.empty": "Confirm Password is required.",
           "any.required": "Confirm Password is required.",

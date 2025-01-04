@@ -28,6 +28,15 @@ class AuthRoutes extends AuthController {
     this.router
       .route("/logout")
       .post(authMiddleware.validateAccessToken, this.logout.bind(this));
+    this.router
+      .route("/change-password")
+      .post(
+        authMiddleware.validateAccessToken,
+        customMiddleware.validateRequestBody(
+          userValidator.changePasswordSchema
+        ),
+        this.changePassword.bind(this)
+      );
   }
 }
 

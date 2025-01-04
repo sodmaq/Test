@@ -102,6 +102,44 @@ class AuthService extends BaseService<Auth> {
 
     await isAutherized.reload();
   }
+  public async changePassword(
+    id: number,
+    newPassword: string,
+    oldPassword: string
+  ): Promise<void> {
+    const user = await userService.getByEmailOrId(null, id);
+
+    const isAutherized = bcrypt.compareSync(oldPassword, user.password);
+    console.log("user password", user.password);
+
+    if (!isAutherized) {
+      throw new UnauthorizedError("Wrong Password");
+    }
+    await userService.update(id, { password: newPassword });
+    console.log("newPassword", newPassword);
+    console.log("oldPassword", oldPassword);
+  }
+  // public async changePassword(
+  //   id: number,
+  //   newPassword: string,
+  //   oldPassword: string
+  // ): Promise<void> {
+  //   // Fetch the user by ID
+  //   const user = await userService.getByEmailOrId(null, id);
+
+  //   // Compare the provided old password with the hashed password in the database
+  //   const isAuthorized = bcrypt.compareSync(oldPassword, user.password);
+
+  //   if (!isAuthorized) {
+  //     throw new UnauthorizedError("Wrong Password");
+  //   }
+
+  //   // Hash the new password before storing it in the database
+  //   const hashedNewPassword = bcrypt.hashSync(newPassword, 10);
+
+  //   // Update the user password with the hashed password
+  //   await userService.update(id, { password: hashedNewPassword });
+  // }
   public async isLoggedIn(userId: number): Promise<boolean> {
     return (await this.get({ userId })).isLoggedIn;
   }

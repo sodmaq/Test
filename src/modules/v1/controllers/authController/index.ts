@@ -64,4 +64,19 @@ export default class AuthControlller {
       next(error);
     }
   }
+
+  protected async changePassword(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<Response> {
+    try {
+      const { id } = req.user;
+      const { newPassword, oldPassword } = req.body;
+      await authService.changePassword(id, newPassword, oldPassword);
+      return apiResponse.successResponse(res, 200, "Password Changed");
+    } catch (error) {
+      next(error);
+    }
+  }
 }
