@@ -1,0 +1,4 @@
+::1 - - [04/Jan/2025:08:48:43 +0000] "POST /api/v1/auth/register HTTP/1.1" 400 179 "-" "PostmanRuntime/7.43.0"
+::1 - - [04/Jan/2025:08:49:15 +0000] "POST /api/v1/auth/register HTTP/1.1" 500 153 "-" "PostmanRuntime/7.43.0"
+::1 - - [04/Jan/2025:08:55:20 +0000] "POST /api/v1/auth/register HTTP/1.1" 500 153 "-" "PostmanRuntime/7.43.0"
+::1 - - [04/Jan/2025:09:04:01 +0000] "POST /api/v1/auth/register HTTP/1.1" 500 153 "-" "PostmanRuntime/7.43.0"

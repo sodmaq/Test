@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { NotFoundError } from "../../../utils/errors";
+import authRoutes from "./authRoutes";
 
 class V1Routes {
   public router: Router;
@@ -10,6 +11,7 @@ class V1Routes {
   }
 
   routes(): void {
+    this.router.use("/auth", authRoutes);
     // To catch 404 Errors
     this.router.use("*", () => {
       throw new NotFoundError(
