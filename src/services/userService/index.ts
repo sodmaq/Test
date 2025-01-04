@@ -11,6 +11,7 @@ import {
 } from "../../interfaces/user.interface";
 import BaseService from "../base.service";
 import bcrypt from "bcryptjs";
+import { console } from "inspector";
 
 class UserService extends BaseService<User> {
   constructor() {
@@ -26,7 +27,6 @@ class UserService extends BaseService<User> {
     const { fullname, email, password, avatar, username, role } = data;
 
     const validRoles = Object.values(UserRole);
-    // console.log("validRoles:", validRoles);
     const userRole = validRoles.includes(role) ? role : UserRole.user;
 
     const attributes = {

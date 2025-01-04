@@ -35,6 +35,11 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      phoneNumber: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true,
+      },
       x: {
         type: DataTypes.STRING,
         allowNull: true,

@@ -41,6 +41,7 @@ class AuthService extends BaseService<Auth> {
 
     // Check Email, Username, PhoneNumber
     const userExists = await userService.get(whereQuery);
+    console.log("does user exist", userExists);
     if (userExists) {
       throw new BadRequestError("User already exists");
     }

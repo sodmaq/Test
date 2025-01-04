@@ -1,9 +1,9 @@
 export enum UserStatus {
-  active = "Active",
-  inactive = "In Active",
+  active = "active",
+  inactive = "inactive",
 }
 
 export enum UserRole {
-  user = "User",
-  admin = "Admin",
+  user = "user",
+  admin = "admin",
 }
