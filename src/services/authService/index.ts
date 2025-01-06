@@ -133,6 +133,38 @@ class AuthService extends BaseService<Auth> {
 
     return accessToken;
   }
+  public async setUpOTP(userId: number): Promise<string> {
+    const otpCode = crypto.randomInt(100000, 999999).toString();
+    const isAutherized = await this.getByFKsOrError({ userId });
+    await isAutherized.update({ otpCode, otpCreatedAt: new Date() }); //TODO investigate issue here
+    await isAutherized.reload();
+
+    return otpCode;
+  }
+
+  public async removeOTP(userId: number): Promise<void> {
+    const isAutherized = await this.getByFKsOrError({ userId });
+    await isAutherized.update({ otpCode: null, otpCreatedAt: null });
+
+    await isAutherized.reload();
+  }
+
+  public async verifyOTP(otpCode: string, password: string): Promise<boolean> {
+    const otpTTL = parseInt(process.env.OTP_TTL) * 60 * 1000 || 600000;
+    const isAutherized = await this.get({ otpCode });
+    if (!isAutherized) throw new BadRequestError("Invalid or expired OTP");
+
+    const isOtpValid = isAutherized.otpCode === otpCode;
+    const isOtpValidTTL =
+      new Date().getTime() - isAutherized.otpCreatedAt.getTime() < otpTTL;
+
+    if (!isOtpValid || !isOtpValidTTL)
+      throw new BadRequestError("Invalid or expired OTP");
+    await this.removeOTP(isAutherized.userId);
+    await userService.update(isAutherized.userId, { password });
+
+    return true;
+  }
 }
 
 export default new AuthService();
