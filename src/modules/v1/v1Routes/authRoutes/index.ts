@@ -37,6 +37,12 @@ class AuthRoutes extends AuthController {
         ),
         this.changePassword.bind(this)
       );
+    this.router
+      .route("/refresh")
+      .post(
+        customMiddleware.validateRequestBody(userValidator.refreshSchema),
+        this.refresh.bind(this)
+      );
   }
 }
 

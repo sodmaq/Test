@@ -64,6 +64,23 @@ export default class AuthControlller {
       next(error);
     }
   }
+  protected async refresh(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<Response> {
+    try {
+      const { refreshToken } = req.body;
+
+      const accessToken = await authService.refresh(refreshToken);
+
+      return apiResponse.successResponse(res, 200, "Token Refresh Successful", {
+        accessToken,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 
   protected async changePassword(
     req: Request,

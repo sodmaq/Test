@@ -119,6 +119,20 @@ class AuthService extends BaseService<Auth> {
   public async isLoggedIn(userId: number): Promise<boolean> {
     return (await this.get({ userId })).isLoggedIn;
   }
+  public async refresh(refreshToken: string): Promise<string> {
+    const { payload, expired } = jwtUtil.verify(refreshToken as string);
+    if (expired) {
+      throw new UnauthorizedError("Invalid token.");
+    }
+
+    const userIdentity = {
+      id: payload.id,
+      username: payload.username,
+    };
+    const accessToken = jwtUtil.generate(userIdentity);
+
+    return accessToken;
+  }
 }
 
 export default new AuthService();
